@@ -1,0 +1,40 @@
+{
+   "name": "docket",
+   "version": "0.0.0",
+   "main": "lib/index",
+   "bin": { "docket": "./bin/docket" },
+   "author": {
+       "name" : "Russell McClellan",
+       "email": "russell.mcclellan@gmail.com",
+       "url" : "http://www.ghostfact.com"
+   },
+   "description": "The stupid documentation generator",
+   "keywords": [
+       "autodoc",
+       "markdown",
+       "documentation",
+       "doc"
+   ],
+   "repository" : {
+       "type": "git",
+       "url": "http://github.com/ghostfact/node-docket.git" 
+   },
+   "dependencies" : [
+       "coffee-script",
+       "optimist"
+   ],
+   "devDependencies" : [
+       "expresso"
+   ],
+   "directories": {
+       "bin": "bin",
+       "lib": "lib"
+   },
+   "engines": {
+       "node": ">=0.3.0"
+   },
+   "scripts": {
+       "test" : "cake test",
+       "coverage" : "cake test-cov"
+   }
+}
