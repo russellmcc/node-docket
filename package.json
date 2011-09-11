@@ -1,6 +1,6 @@
 {
    "name": "docket",
-   "version": "0.0.3",
+   "version": "0.0.4",
    "main": "lib/docket",
    "bin": { "docket": "./bin/docket" },
    "author": {

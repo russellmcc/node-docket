@@ -168,13 +168,13 @@ parse_text = (path, text, sections) ->
       else
         if not in_code
           in_code = true
-          sections[curr_section].text += '\n'
-        sections[curr_section].text += "          #{line}\n"
+          sections[curr_section].text += if html_mode then "\n" else "```#{lang.name}\n"
+        sections[curr_section].text += (if html_mode then "        " else "") + "#{line}\n"
     else
       if curr_section?
         if in_code and verbatim
           in_code = false
-          sections[curr_section].text += '\n'
+          sections[curr_section].text += if html_mode then '\n' else '```\n'
           
         # if we run into any _Section Identifiers_ while in a section,
         # these must be references.
@@ -196,6 +196,8 @@ parse_text = (path, text, sections) ->
             sections[curr_section] = {text : "", refs : []} if not sections[curr_section]?
           else
             sections[curr_section].text += "\n"
+  if verbatim and in_code and not html_mode
+    sections[curr_section].text += '```\n'
 
   sections
 
