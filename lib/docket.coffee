@@ -40,6 +40,9 @@
 # but with the `-m` option you can output the raw markdown.  We use the same github-flavored-markdown
 # as docco.
 #
+# sections whose name begins with `verbatim:` are special in that the rest of the file,
+# code and all, are added to the section.
+#
 # ~referenceinfo~
 
 # ~referenceinfo~
@@ -129,13 +132,25 @@ get_language = (sourcepath) ->
 parse_text = (path, text, sections) ->
   lang = get_language path
   curr_section = null
+  verbatim = false
+  in_code = false
   for line in text.split '\n'
     # for each line in the file, try to grab a comment.
     comment = lang.get_comment line
     if not comment?
-      curr_section = null
+      if not verbatim
+        curr_section = null
+      else
+        if not in_code
+          in_code = true
+          sections[curr_section].text += '\n'
+        sections[curr_section].text += "          #{line}\n"
     else
       if curr_section?
+        if in_code and verbatim
+          in_code = false
+          sections[curr_section].text += '\n'
+          
         # if we run into any _Section Identifiers_ while in a section,
         # these must be references.
         section_id_regex = (new RegExp section_identifier(), "g")
@@ -149,6 +164,9 @@ parse_text = (path, text, sections) ->
         header = header_regex.exec comment
         curr_section = header?[1]
         if curr_section?
+          if (/^verbatim:/.exec curr_section)
+            verbatim = true
+            curr_section = curr_section.replace "verbatim:", ""
           if not sections[curr_section]?
             sections[curr_section] = {text : "", refs : []} if not sections[curr_section]?
           else
@@ -222,7 +240,7 @@ get_html = (title, html) ->
 # of files.
 read_files = (paths) -> (sections) ->
   if paths.length
-    read_file paths[0], sections, read_files paths.shift
+    read_file paths[0], sections, read_files paths[1...paths.length]
   else
     # finished all the paths - now we have to fill in all references
     sections = fill_references(sections)
