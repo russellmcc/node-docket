@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+require('coffee-script')
+var docket = require('../lib/docket')
+var optimist = require('optimist').usage('Extract documentation from comments. $0 [files]')
+    .boolean(['m', 'h'])
+    .alias({
+        'm': 'markdown',
+        'h': 'html',
+        'b': 'brackets',
+        'd': 'base-dir'
+    })
+    .describe({
+        'm' : 'generate markdown content.  defaults to false.',
+        'h' : 'generate html content. defaults to true unless markdwon is set.',
+        'b' : 'must be a utf8 string of length 2.  the left and right brackets to use for section names',
+        'd' : 'the base directory for output.'
+    }).check(function(arrrrg){
+        if(!(arrrrg._.length))
+            throw "must provide at least one input file."
+        if(arrrrg.brackets && (arrrrg.brackets.length !== 2))
+            throw "brackets must be exactly a length two string"
+    })
+    
+var argv = optimist.argv;
+
+// default to html mode if neither is set.
+if(!(argv.html || argv.markdown)) {
+    argv.html = true;
+}
+
+docket.perform(argv._, argv)
