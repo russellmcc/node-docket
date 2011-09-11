@@ -1,6 +1,6 @@
 {
    "name": "docket",
-   "version": "0.0.0",
+   "version": "0.0.1",
    "main": "lib/docket",
    "bin": { "docket": "./bin/docket" },
    "author": {
@@ -23,9 +23,6 @@
        "coffee-script",
        "optimist"
    ],
-   "devDependencies" : [
-       "expresso"
-   ],
    "directories": {
        "bin": "bin",
        "lib": "lib"
@@ -34,7 +31,6 @@
        "node": ">=0.3.0"
    },
    "scripts": {
-       "test" : "cake test",
-       "coverage" : "cake test-cov"
+       "doc" : "cake doc"
    }
 }
