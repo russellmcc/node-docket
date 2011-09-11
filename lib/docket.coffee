@@ -48,6 +48,8 @@
 # sections whose name begins with `verbatim:` are special in that the rest of the file,
 # code and all, are added to the section.
 #
+# #### Ordered sections
+#
 # Across several files, there are no guarentees about the order files are added to sections.
 # To ensure a particular ordering, use square brackets `[]` at the end of the section name.
 # e.g:
@@ -55,6 +57,8 @@
 # ~ordereddemo~
 #
 #  The tokens inside the square brackets are sorted in lexicographic order.
+#
+# #### References 
 #
 # ~referenceinfo~
 
