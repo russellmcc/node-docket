@@ -57,6 +57,8 @@ as docco.</p>
 <p>sections whose name begins with <code>verbatim:</code> are special in that the rest of the file,
 code and all, are added to the section.</p>
 
+<h4>Ordered sections</h4>
+
 <p>Across several files, there are no guarentees about the order files are added to sections.
 To ensure a particular ordering, use square brackets <code>[]</code> at the end of the section name.
 e.g:</p>
@@ -70,6 +72,8 @@ e.g:</p>
 </code></pre>
 
 <p>The tokens inside the square brackets are sorted in lexicographic order.</p>
+
+<h4>References</h4>
 
 <p>While a section is open, any tilded identifiers become references to other sections.
 after all the input files are parsed, the references are filled in with the text
