@@ -8,7 +8,7 @@
        "email": "russell.mcclellan@gmail.com",
        "url" : "http://www.ghostfact.com"
    },
-   "description": "The stupid documentation generator",
+   "description": "minimalist documentation generator",
    "keywords": [
        "autodoc",
        "markdown",

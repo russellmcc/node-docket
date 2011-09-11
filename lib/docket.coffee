@@ -3,6 +3,8 @@
 #
 # _minimalist documentation generator_
 #
+# [github](http://github.com/ghostfact/node-docket)
+#
 # *docket* is a tool I created for myself which lets one easily extract 
 # github-flavored-markdown from source code.  It isn't particularly smart
 # and it doesn't try to do too much, but it's easy to use.  The simple idea 
