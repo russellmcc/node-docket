@@ -213,7 +213,6 @@ fill_references = (sections, roots) ->
   # first step is to parse out the ordered sections.
   for title, sec of sections
     if (unordered = (/^(.*)\[.*\]$/.exec title)?[1])?
-      console.log sections[unordered]
       sections[unordered] = sections[unordered] ? {refs : [], text : ""}
       sections[unordered].text = "#{sec.text}" + sections[unordered].text
       sections[unordered].refs += sec.refs
