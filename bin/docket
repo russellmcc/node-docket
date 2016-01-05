@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require('coffee-script')
+require('coffee-script/register')
 var docket = require('../lib/docket')
 var optimist = require('optimist').usage('Extract documentation from comments. $0 [files]')
     .boolean(['m', 'h'])

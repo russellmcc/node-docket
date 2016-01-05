@@ -1,6 +1,6 @@
 {
    "name": "docket",
-   "version": "0.0.4",
+   "version": "0.0.5",
    "main": "lib/docket",
    "bin": { "docket": "./bin/docket" },
    "author": {
@@ -8,7 +8,8 @@
        "email": "russell.mcclellan@gmail.com",
        "url" : "http://www.ghostfact.com"
    },
-   "description": "minimalist documentation generator",
+  "description": "minimalist documentation generator",
+  "license": "Zlib",
    "keywords": [
        "autodoc",
        "markdown",
